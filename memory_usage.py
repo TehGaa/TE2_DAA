@@ -1,29 +1,29 @@
-import time
+import tracemalloc
 from greedy_weighted_set_cover import set_cover
 from branch_and_bound_weighted_set_cover import BB
 
-def running_time_greedy_weighted_set_cover(universes, subsets, weights, datasets):
+def memory_usage_greedy_weighted_set_cover(universes, subsets, weights, datasets):
     print("-------------GREEDY RESULT AND RUNNING TIME--------------")
     for i in range(len(datasets)):
         print(f"-----------------DATASET {datasets[i]}----------------")
-        begin = time.time()
+        tracemalloc.start()
         result = set_cover(universes[i], subsets[i], weights[i])
-        end = time.time()
+        memory = tracemalloc.get_traced_memory()
         cover, weight = result[0], result[1]
         print("weight:", weight)
-        print(f"running time: {(end-begin)*1000:.8f} ms")
+        print(f"memory_usage: {memory}")
         print()
 
-def running_time_branch_and_bound_weighted_set_cover(universes, subsets, weights, datasets):
+def memory_usage_branch_and_bound_weighted_set_cover(universes, subsets, weights, datasets):
     print("-------------B&B RESULT AND RUNNING TIME--------------")
     for i in range(len(datasets)):
         print(f"-----------------DATASET {datasets[i]}----------------")
-        begin = time.time()
+        tracemalloc.start()
         result = BB(universes[i], subsets[i], weights[i])
-        end = time.time()
+        memory = tracemalloc.get_traced_memory()
         weight, temp_cover = result[0], result[1]
         print("weight:", weight)
-        print(f"running time: {(end-begin)*1000:.15f} ms")
+        print(f"memory usage: {memory}")
         print()
 
 def generate_input(datasets):
@@ -84,5 +84,5 @@ def generate_input(datasets):
 if __name__ == "__main__":
     datasets = [20, 200, 2000]
     universes, subsets, weights = generate_input(datasets)
-    running_time_greedy_weighted_set_cover(universes, subsets, weights, datasets)
-    running_time_branch_and_bound_weighted_set_cover(universes, subsets, weights, datasets)
+    memory_usage_greedy_weighted_set_cover(universes, subsets, weights, datasets)
+    memory_usage_branch_and_bound_weighted_set_cover(universes, subsets, weights, datasets)
