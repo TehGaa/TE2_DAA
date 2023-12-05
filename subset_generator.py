@@ -4,7 +4,8 @@ random.seed(2)
 
 def subset_generator(universe):
     subsets = []
-    while set().union(*subsets) != universe:
+    size = random.randint(50,100)
+    while set().union(*subsets) != universe or len(subsets) < size:
         subset = set(random.sample(sorted(universe), 
                                random.randint(1, len(universe))))
         while subset in subsets:
