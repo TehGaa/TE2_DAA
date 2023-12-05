@@ -19,21 +19,21 @@ def nextvertex(subset, i, m):
                 
     return subset, 0
 
-def BB(universe,sets,costs):
+def BB(universe,sets,weights):
     subset = [1 for x in range(len(sets))]
     subset[0] = 0
-    bestCost = sum(costs) 
+    bestWeight = sum(weights) 
     i = 1
 
     while i > 0:
 
         if i < len(sets):
-            cost, tSet = 0, set()
+            weight, tSet = 0, set()
             for k in range(i):
-                cost += subset[k]*costs[k]
+                weight += subset[k]*weights[k]
                 if subset[k] == 1: tSet.update(set(sets[k]))
 
-            if cost > bestCost:
+            if weight > bestWeight:
                 subset, i = bypassbranch(subset, i)
                 continue
             for k in range(i, len(sets)): tSet.update(set(sets[k]))
@@ -43,14 +43,14 @@ def BB(universe,sets,costs):
                 subset, i = nextvertex(subset, i, len(sets))
                 
         else:
-            cost, fSet = 0, set()
+            weight, fSet = 0, set()
             for k in range(i):
-            	cost += subset[k]*costs[k]
+            	weight += subset[k]*weights[k]
             	if subset[k] == 1: fSet.update(set(sets[k]))
 
-            if cost < bestCost and fSet == universe:
-            	bestCost = cost
+            if weight < bestWeight and fSet == universe:
+            	bestWeight = weight
             	bestSubset = subset[:]
             subset, i = nextvertex(subset, i , len(sets))
 
-    return bestCost, bestSubset
+    return bestWeight, bestSubset
