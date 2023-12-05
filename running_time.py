@@ -91,4 +91,4 @@ if __name__ == "__main__":
     datasets = [20, 200, 2000]
     universes, subsets, weights = generate_input(datasets)
     running_time_greedy_weighted_set_cover(universes, subsets, weights, datasets)
-    # running_time_branch_and_bound_weighted_set_cover(universes, subsets, weights, datasets)
+    running_time_branch_and_bound_weighted_set_cover(universes, subsets, weights, datasets)
