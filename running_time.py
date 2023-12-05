@@ -3,7 +3,7 @@ from greedy_weighted_set_cover import set_cover
 from branch_and_bound_weighted_set_cover import BB
 
 def running_time_greedy_weighted_set_cover(universes, subsets, weights, datasets):
-    print("-------------GREEDY RESULT AND RUNNING TIME--------------")
+    print("-------------GREEDY RUNNING TIME--------------")
     for i in range(len(datasets)):
         print(f"-----------------DATASET {datasets[i]}----------------")
         begin = time.time()
@@ -15,7 +15,7 @@ def running_time_greedy_weighted_set_cover(universes, subsets, weights, datasets
         print()
 
 def running_time_branch_and_bound_weighted_set_cover(universes, subsets, weights, datasets):
-    print("-------------B&B RESULT AND RUNNING TIME--------------")
+    print("-------------B&B RUNNING TIME--------------")
     for i in range(len(datasets)):
         print(f"-----------------DATASET {datasets[i]}----------------")
         begin = time.time()

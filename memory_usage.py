@@ -3,7 +3,7 @@ from greedy_weighted_set_cover import set_cover
 from branch_and_bound_weighted_set_cover import BB
 
 def memory_usage_greedy_weighted_set_cover(universes, subsets, weights, datasets):
-    print("-------------GREEDY RESULT AND RUNNING TIME--------------")
+    print("-------------GREEDY MEMORY USAGE--------------")
     for i in range(len(datasets)):
         print(f"-----------------DATASET {datasets[i]}----------------")
         tracemalloc.start()
@@ -15,7 +15,7 @@ def memory_usage_greedy_weighted_set_cover(universes, subsets, weights, datasets
         print()
 
 def memory_usage_branch_and_bound_weighted_set_cover(universes, subsets, weights, datasets):
-    print("-------------B&B RESULT AND RUNNING TIME--------------")
+    print("-------------B&B MEMORY USAGE--------------")
     for i in range(len(datasets)):
         print(f"-----------------DATASET {datasets[i]}----------------")
         tracemalloc.start()
