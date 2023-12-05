@@ -16,5 +16,5 @@ if __name__ == "__main__":
         else:
             folder_name = f"dataset_besar"
         with open(f'{folder_name}/weight_{i}.txt', 'w') as file:
-            cost = weight_function([j for j in range(1, i+1)])
-            file.write(" ".join([str(k) for k in cost]) + '\n')
+            weight = weight_function([j for j in range(1, i+1)])
+            file.write(" ".join([str(k) for k in weight]) + '\n')
